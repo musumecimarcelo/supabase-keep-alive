@@ -20,3 +20,9 @@ jobs:
           curl -s "${{ secrets.RAIOX_URL }}/rest/v1/" \
           -H "apikey: ${{ secrets.RAIOX_ANON_KEY }}" \
           -o /dev/null
+
+      - name: Ping Diagnostico
+        run: |
+          curl -s "${{ secrets.DIAG_URL }}/rest/v1/" \
+          -H "apikey: ${{ secrets.DIAG_ANON_KEY }}" \
+          -o /dev/null
