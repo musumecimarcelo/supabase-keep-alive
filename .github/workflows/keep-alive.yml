@@ -26,3 +26,9 @@ jobs:
           curl -s "${{ secrets.DIAG_URL }}/rest/v1/" \
           -H "apikey: ${{ secrets.DIAG_ANON_KEY }}" \
           -o /dev/null
+      - name: Ping Inscricoes
+        run: |
+          curl -s "${{ secrets.INSCRICOES_URL }}/rest/v1/" \
+          -H "apikey: ${{ secrets.INSCRICOES_ANON_KEY }}" \
+          -o /dev/null
+          
