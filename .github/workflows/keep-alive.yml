@@ -31,4 +31,8 @@ jobs:
           curl -s "${{ secrets.INSCRICOES_URL }}/rest/v1/" \
           -H "apikey: ${{ secrets.INSCRICOES_ANON_KEY }}" \
           -o /dev/null
-          
+      - name: Ping Financeiro
+        run: |
+          curl -s "${{ secrets.FINANCEIRO_URL }}/rest/v1/" \
+          -H "apikey: ${{ secrets.FINANCEIRO_ANON_KEY }}" \
+          -o /dev/null    
