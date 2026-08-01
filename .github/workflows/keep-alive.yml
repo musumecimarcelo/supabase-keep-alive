@@ -11,30 +11,30 @@ jobs:
     steps:
       - name: Ping Quiz
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.QUIZZ_URL }}/rest/v1/" -H "apikey: ${{ secrets.QUIZZ_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.QUIZZ_ANON_KEY }}")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.QUIZZ_URL }}/rest/v1/quizzes?limit=1" -H "apikey: ${{ secrets.QUIZZ_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.QUIZZ_ANON_KEY }}")
           echo "Quiz respondeu $status"
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then exit 1; fi
 
       - name: Ping Raio-X
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.RAIOX_URL }}/rest/v1/" -H "apikey: ${{ secrets.RAIOX_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.RAIOX_ANON_KEY }}")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.RAIOX_URL }}/rest/v1/empresas?limit=1" -H "apikey: ${{ secrets.RAIOX_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.RAIOX_ANON_KEY }}")
           echo "Raio-X respondeu $status"
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then exit 1; fi
 
       - name: Ping Diagnostico
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.DIAG_URL }}/rest/v1/" -H "apikey: ${{ secrets.DIAG_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.DIAG_ANON_KEY }}")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.DIAG_URL }}/rest/v1/sessions?limit=1" -H "apikey: ${{ secrets.DIAG_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.DIAG_ANON_KEY }}")
           echo "Diagnostico respondeu $status"
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then exit 1; fi
 
       - name: Ping Inscricoes
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.INSCRICOES_URL }}/rest/v1/" -H "apikey: ${{ secrets.INSCRICOES_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.INSCRICOES_ANON_KEY }}")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.INSCRICOES_URL }}/rest/v1/dados_inscricoes?limit=1" -H "apikey: ${{ secrets.INSCRICOES_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.INSCRICOES_ANON_KEY }}")
           echo "Inscricoes respondeu $status"
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then exit 1; fi
 
       - name: Ping Financeiro
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.FINANCEIRO_URL }}/rest/v1/" -H "apikey: ${{ secrets.FINANCEIRO_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.FINANCEIRO_ANON_KEY }}")
+          status=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.FINANCEIRO_URL }}/rest/v1/lancamentos?limit=1" -H "apikey: ${{ secrets.FINANCEIRO_ANON_KEY }}" -H "Authorization: Bearer ${{ secrets.FINANCEIRO_ANON_KEY }}")
           echo "Financeiro respondeu $status"
           if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then exit 1; fi
